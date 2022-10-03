@@ -1,4 +1,4 @@
-Guess ABI of any Ethereum contract, even if it is not verified on Etherscan. Works by analyzing the bytecode,
+Guess ABI of any EVM contract, even if it is not verified. Works by analyzing the bytecode,
 extracting selectors from PUSH4/JUMPI instructions and comparing them to known ABI signatures.
 
 Powered by <a href="https://github.com/shazow/whatsabi">@shazow/whatsabi</a> and <a href="https://www.4byte.directory/">4byte.directory</a>

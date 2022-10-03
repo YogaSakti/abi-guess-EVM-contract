@@ -5,7 +5,7 @@ type Props = {
   description: string;
 };
 
-const BASE_URL = 'https://abi.w1nt3r.xyz';
+const BASE_URL = 'https://abi-guess-evm-contract.vercel.app';
 
 export default function HeadMeta(props: Props) {
   return (
