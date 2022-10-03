@@ -20,6 +20,7 @@ export default function HeadMeta(props: Props) {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@w1nt3r_eth" />
       <meta name="twitter:creator" content="@w1nt3r_eth" />
+      <meta name="twitter:modifer" content="@teman_bahagia" />
       <meta name="twitter:title" content={props.title} />
       <meta name="twitter:description" content={props.description} />
       <meta name="twitter:image" content={`${BASE_URL}/og_image.png`} />

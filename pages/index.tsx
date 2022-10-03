@@ -17,11 +17,12 @@ const Home: NextPage = () => {
           Guess ABI of any Ethereum contract, even if it is not verified on Etherscan. Works by analyzing the bytecode,
           extracting selectors from PUSH4/JUMPI instructions and comparing them to known ABI signatures.
         </p>
-
+      
         <form action="/search" method="get">
+          <label htmlFor="address">Address:</label>
           <input
             name="address"
-            type="search"
+            type="text"
             placeholder="0x123...abc"
             required
             autoFocus
@@ -30,7 +31,16 @@ const Home: NextPage = () => {
             spellCheck="false"
             autoComplete="off"
           />
-          <button type="submit">→</button>
+
+          <br />
+          <label htmlFor="chain">Chain Name:</label>
+          <select name="chain" id="chain">
+            <option value="mainnet">Ethereum</option>
+            <option value="polygon">Polygon</option>
+          </select>
+          <br />
+          <br />
+          <button type="submit">→→→</button>
         </form>
         <p className="description">Or try some examples:</p>
         <p className="description">
@@ -45,19 +55,33 @@ const Home: NextPage = () => {
       </main>
       <style jsx>{`
         .main {
-          padding: 2rem;
-          max-width: 60ch;
+          border-radius: 5px;
+          background-color: #f2f2f2;
+          padding: 20px;
         }
-        form {
-          display: flex;
-        }
-        input {
+        input[type=text], select, textarea {
           width: 100%;
-          padding: 0.5rem;
-          font-size: 1.5rem;
+          padding: 12px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          resize: vertical;
         }
         button {
-          width: 50px;
+          background-color: #04AA6D;
+          color: white;
+          padding: 12px 20px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          float: center;
+        }
+        button:hover {
+          background-color: #45a049;
+        }
+        .row:after {
+          content: "";
+          display: table;
+          clear: both;
         }
       `}</style>
     </div>

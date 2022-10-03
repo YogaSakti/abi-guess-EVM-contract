@@ -34,9 +34,9 @@ export default function ABI(props: Props) {
       <HeadMeta title={`Signatures for ${props.address}`} description={`ABI signatures for ${props.address}`} />
       <h1>
         Signatures for{' '}
-        <a href={`https://etherscan.io/address/${props.address}`} target="_blank" rel="noreferrer">
+        {/* <a href={`https://etherscan.io/address/${props.address}`} target="_blank" rel="noreferrer"> */}
           {props.address}
-        </a>
+        {/* </a> */}
       </h1>
       {props.signatures.map((signatures, i) => (
         <SelectorWithSignatures key={i} selector={props.selectors[i]} signatures={signatures} />
@@ -123,14 +123,23 @@ function SelectorWithSignatures(props: { selector: string; signatures: Signature
 export const getServerSideProps: GetServerSideProps<Props> = async ({ params, res }) => {
   const address = params?.address as string;
   let chain: string | number = params?.chain as string;
+  let apiKey;
 
-  if (chain === 'mainnet') {
-    chain = 1;
+  switch (chain) {
+    case 'mainnet':
+      chain = 1;
+      apiKey = process.env.ALCHEMY_API_KEY_ETHEREUM
+      break;
+    case 'polygon':
+      chain = 137;
+      apiKey = process.env.ALCHEMY_API_KEY_POLYGON
+      break;
   }
+
 
   const provider = new ethers.providers.AlchemyProvider(
     isNaN(Number(chain)) ? chain : Number(chain),
-    process.env.ALCHEMY_API_KEY
+    apiKey
   );
 
   const code = await provider.getCode(address);
